@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Pembentukan Kepribadian Mahasiswa melalui Organisasi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #5c8bc0;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            font-size: 24px;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #5c8bc0;
+            outline: none;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-group label {
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-group label:before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #bbb;
+            background-color: white;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .radio-group input[type="radio"]:checked + label:before {
+            background-color: #5c8bc0;
+            border-color: #5c8bc0;
+        }
+
+        .radio-group input[type="radio"]:checked + label:after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .radio-group label:hover:before {
+            border-color: #5c8bc0;
+        }
+
+        input[type="submit"] {
+            background-color: #5c8bc0;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        textarea:focus {
+            border-color: #5c8bc0; /* Mengubah border menjadi biru */
+            font-family: 'Arial', sans-serif; /* Mengganti jenis font */
+            font-size: 16px; /* Meningkatkan ukuran font */
+            outline: none; /* Menghilangkan outline default saat fokus */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5c8bc0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 20px;
+                padding: 15px 0;
+            }   
+
+            .form-container {
+                padding: 20px;
+                margin: 15px;
+            }
+
+            .question {
+                margin-bottom: 30px;
+                flex-direction: column;
+            }
+
+            .radio-group {
+                flex-direction: column; 
+                gap: 12px;
+            }
+
+            .radio-group label {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            input[type="submit"] {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Survey Pembentukan Kepribadian Pelajar Dan Mahasiswa melalui Organisasi</h1>
+    <div class="form-container">
+        <form id="surveyForm" action="https://script.google.com/macros/s/AKfycbywifghpc7B6d_oEeL7somPgC-JUxOWFFGF1YSP1AHxHaGpLDoU4xXxi_3yD_wZ6yQOGQ/exec" method="POST">
+            <!-- Bagian 1: Data Pribadi -->
+            <div class="question">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+
+            <div class="question">
+                <label>Jenis Kelamin</label>
+                <input type="radio" name="JenisKelamin" value="Laki-laki" required> Laki-laki
+                <input type="radio" name="JenisKelamin" value="Perempuan" required> Perempuan
+            </div>            
+
+            <!-- <div class="question">
+                <label for="usia">Usia</label>
+                <input type="number" id="Usia" name="Usia" min="18" required>
+            </div> -->
+
+            <div class="question">
+                <label for="programStudi">Jurusan / Program Studi</label>
+                <input type="text" id="ProgramStudi" name="ProgramStudi" required>
+            </div>
+
+            <!------------------------------------------------>
+            <!-- <div class="question">
+                <label for="tahunAngkatan">Tahun Angkatan</label>
+                <input type="number" id="TahunAngkatan" name="TahunAngkatan" min="2000" required>
+            </div>  -->
+
+            <div class="question">
+                <label>Apakah Anda mahasiswa atau pelajar?</label>
+                <input type="radio" name="Status" value="Mahasiswa" required> Mahasiswa
+                <input type="radio" name="Status" value="Pelajar"> Pelajar
+            </div> 
+
+            <!-- Bagian 2: Pengalaman dengan Organisasi -->
+            <div class="question">
+                <label>Apakah Anda Anda Pernah ikut Organisasi ?</label>
+                <input type="radio" name="lebihDariSatu" value="Ya" required> Ya
+                <input type="radio" name="lebihDariSatu" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Jenis organisasi atau komunitas apa yang Anda ikuti?</label>
+                <input type="text" name="jenisOrganisasi" placeholder="Misalnya: Organisasi sosial, profesional, keagamaan, kemahasiswaan, olahraga, dll." required>
+            </div>
+
+            <div class="question">
+                <label>Sejak kapan Anda mulai terlibat dalam organisasi atau komunitas?</label>
+                <input type="text" name="waktuTerlibat" placeholder="Tahun/Usia" required>
+            </div>
+
+            <div class="question">
+                <label>Seberapa sering Anda terlibat dalam kegiatan organisasi atau komunitas tersebut?</label>
+                <input type="radio" name="frekuensiTerlibat" value="Sering" required> Sering <br>
+                <input type="radio" name="frekuensiTerlibat" value="Kadang-kadang"> Kadang-kadang <br>
+                <input type="radio" name="frekuensiTerlibat" value="Jarang"> Jarang <br>
+                <input type="radio" name="frekuensiTerlibat" value="Tidak Pernah"> Tidak Pernah
+            </div>
+
+            <div class="question">
+                <label>Apa peran Anda dalam organisasi atau komunitas tersebut?</label>
+                <input type= "text" name="perorganisasi" placeholder="Misalnya: Ketua, Anggota, Relawan, dll." required>
+            </div>
+
+            <div class="question">
+                <label>Apakah Anda merasa keterlibatan Anda dalam organisasi ini memiliki dampak yang signifikan dalam kehidupan pribadi Anda?</label>
+                <input type="radio" name="dampakPribadi" value="Ya" required> Ya
+                <input type="radio" name="dampakPribadi" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Seberapa lama Anda sudah terlibat dalam organisasi atau komunitas ini?</label>
+                <input type="radio" name="durasiTerlibat" value="Kurang dari 6 bulan" required> Kurang dari 6 bulan <br>
+                <input type="radio" name="durasiTerlibat" value="6-12 bulan"> 6-12 bulan <br>
+                <input type="radio" name="durasiTerlibat" value="1-2 tahun"> 1-2 tahun <br>
+                <input type="radio" name="durasiTerlibat" value="Lebih dari 2 tahun"> Lebih dari 2 tahun
+            </div> 
+
+            <div class="question">
+                <label>Apakah Anda merasa bahwa organisasi atau komunitas ini memberi Anda peluang untuk berkembang secara pribadi atau profesional?</label>
+                <input type="radio" name="peluangBerkembang" value="Ya" required> Ya
+                <input type="radio" name="peluangBerkembang" value="Tidak"> Tidak
+            </div> 
+
+            <!-- Bagian 3: Pengaruh terhadap Kepribadian -->
+            <div class="question">
+                <label>Bagaimana keterlibatan Anda dalam organisasi atau komunitas mempengaruhi rasa percaya diri Anda?</label>
+                <input type="radio" name="percayaDiri" value="Lebih percaya diri" required> Lebih percaya diri <br>
+                <input type="radio" name="percayaDiri" value="Tidak ada perubahan"> Tidak ada perubahan <br>
+                <input type="radio" name="percayaDiri" value="Lebih kurang percaya diri"> Lebih kurang percaya diri <br>
+            </div>
+
+            <div class="question">
+                <label>Apakah Anda merasa lebih mudah berinteraksi dengan orang lain setelah bergabung dalam organisasi atau komunitas?</label>
+                <input type="radio" name="interaksi" value="Ya" required> Ya
+                <input type="radio" name="interaksi" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Sejauh mana organisasi atau komunitas ini membantu Anda dalam mengembangkan keterampilan kepemimpinan?</label>
+                <input type="radio" name="kepemimpinan" value="Sangat membantu" required> Sangat membantu <br>
+                <input type="radio" name="kepemimpinan" value="Cukup membantu"> Cukup membantu <br>
+                <input type="radio" name="kepemimpinan" value="Tidak terlalu membantu"> Tidak terlalu membantu <br>
+                <input type="radio" name="kepemimpinan" value="Tidak sama sekali"> Tidak sama sekali
+            </div>
+
+            <div class="question">
+                <label>Apakah Anda merasa lebih bertanggung jawab setelah bergabung dengan organisasi atau komunitas ini?</label>
+                <input type="radio" name="bertanggungJawab" value="Ya" required> Ya
+                <input type="radio" name="bertanggungJawab" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah organisasi atau komunitas ini membantu Anda menjadi lebih disiplin dalam mengatur waktu?</label>
+                <input type="radio" name="disiplin" value="Ya" required> Ya
+                <input type="radio" name="disiplin" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah Anda merasa organisasi atau komunitas ini mengajarkan Anda pentingnya kerjasama tim?</label>
+                <input type="radio" name="kerjasama" value="Ya" required> Ya
+                <input type="radio" name="kerjasama" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah keterlibatan dalam organisasi atau komunitas membantu Anda menjadi lebih terbuka terhadap perbedaan pendapat?</label>
+                <input type="radio" name="terbuka" value="Ya" required> Ya
+                <input type="radio" name="terbuka" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Sejauh mana organisasi atau komunitas ini mempengaruhi pola pikir dan cara pandang Anda terhadap masalah?</label>
+                <input type="radio" name="polaPikir" value="Sangat berpengaruh" required> Sangat berpengaruh <br>
+                <input type="radio" name="polaPikir" value="Cukup berpengaruh"> Cukup berpengaruh <br>
+                <input type="radio" name="polaPikir" value="Tidak terlalu berpengaruh"> Tidak terlalu berpengaruh <br>
+                <input type="radio" name="polaPikir" value="Tidak berpengaruh sama sekali"> Tidak berpengaruh sama sekali
+            </div>
+
+            <div class="question">
+                <label>Apakah Anda merasa lebih mudah mengatasi tantangan atau tekanan setelah terlibat dalam organisasi atau komunitas ini?</label>
+                <input type="radio" name="atasiTantangan" value="Ya" required> Ya
+                <input type="radio" name="atasiTantangan" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah organisasi atau komunitas ini meningkatkan kemampuan komunikasi Anda?</label>
+                <input type="radio" name="komunikasi" value="Ya" required> Ya
+                <input type="radio" name="komunikasi" value="Tidak"> Tidak
+            </div> 
+
+            <div class="question">
+                <label>Sejauh mana organisasi atau komunitas membantu Anda dalam mengambil keputusan secara mandiri?</label>
+                <input type="radio" name="pengambilanKeputusan" value="Sangat membantu" required> Sangat membantu <br>
+                <input type="radio" name="pengambilanKeputusan" value="Cukup membantu"> Cukup membantu <br>
+                <input type="radio" name="pengambilanKeputusan" value="Tidak terlalu membantu"> Tidak terlalu membantu <br>
+                <input type="radio" name="pengambilanKeputusan" value="Tidak membantu sama sekali"> Tidak membantu sama sekali
+            </div> 
+
+            <div class="question">
+                <label>Apakah organisasi atau komunitas ini mengajarkan Anda untuk lebih bertanggung jawab terhadap tugas dan komitmen?</label>
+                <input type="radio" name="tanggungJawab" value="Ya" required> Ya
+                <input type="radio" name="tanggungJawab" value="Tidak"> Tidak
+            </div> 
+
+            <div class="question">
+                <label>Apakah Anda merasa lebih empati terhadap orang lain setelah bergabung dengan organisasi atau komunitas ini?</label>
+                <input type="radio" name="empati" value="Ya" required> Ya
+                <input type="radio" name="empati" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah organisasi atau komunitas ini meningkatkan rasa percaya diri Anda dalam berbicara di depan umum?</label>
+                <input type="radio" name="berbicaraUmum" value="Ya" required> Ya
+                <input type="radio" name="berbicaraUmum" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah pengalaman di organisasi atau komunitas membuat Anda lebih mampu mengatur emosi atau stres?</label>
+                <input type="radio" name="pengelolaanEmosi" value="Ya" required> Ya
+                <input type="radio" name="pengelolaanEmosi" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah organisasi atau komunitas ini memperkuat kemampuan Anda dalam menyelesaikan konflik?</label>
+                <input type="radio" name="penyelesaianKonflik" value="Ya" required> Ya
+                <input type="radio" name="penyelesaianKonflik" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah organisasi atau komunitas ini mempengaruhi pandangan Anda tentang etika kerja dan profesionalisme?</label>
+                <input type="radio" name="etikaKerja" value="Ya" required> Ya
+                <input type="radio" name="etikaKerja" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Apakah pengalaman di organisasi atau komunitas membuat Anda lebih terbuka dalam menerima kritik konstruktif?</label>
+                <input type="radio" name="kritikKonstruktif" value="Ya" required> Ya
+                <input type="radio" name="kritikKonstruktif" value="Tidak"> Tidak
+            </div>
+
+            <div class="question">
+                <label>Sejauh mana organisasi atau komunitas ini membantu Anda dalam membentuk nilai-nilai pribadi yang lebih jelas?</label>
+                <input type="radio" name="nilaiPribadi" value="Sangat membantu" required> Sangat membantu <br>
+                <input type="radio" name="nilaiPribadi" value="Cukup membantu"> Cukup membantu <br>
+                <input type="radio" name="nilaiPribadi" value="Tidak terlalu membantu"> Tidak terlalu membantu <br>
+                <input type="radio" name="nilaiPribadi" value="Tidak membantu sama sekali"> Tidak membantu sama sekali
+            </div>
+
+            <div class="question">
+                <label>Apa kesan dan pesan yang Anda dapatkan selama berpartisipasi dalam organisasi?</label>
+                <textarea type="text" name="motivasiBergabung" rows="5" required></textarea>
+            </div> 
+
+            <input type="submit" value="Kirim Survei">  
+        </form>
+    </div>
+</body>
+</html>
