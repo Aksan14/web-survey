@@ -181,7 +181,7 @@
 <body>
     <h1>Survey Pembentukan Kepribadian Pelajar Dan Mahasiswa melalui Organisasi</h1>
     <div class="form-container">
-        <form id="surveyForm" action="https://script.google.com/macros/s/AKfycbywifghpc7B6d_oEeL7somPgC-JUxOWFFGF1YSP1AHxHaGpLDoU4xXxi_3yD_wZ6yQOGQ/exec" method="POST">
+        <form id="surveyForm" action="https://script.google.com/macros/s/AKfycbyBJChqloBp0TaIDMBfPEM17DRGOUKdoNeHKeQIjpchF3beA2Gz_H_vyRuBmM1lpm3SYQ/exec" method="POST">
             <!-- Bagian 1: Data Pribadi -->
             <div class="question">
                 <label for="nama">Nama Lengkap</label>
@@ -230,8 +230,67 @@
 
             <div class="question">
                 <label>Sejak kapan Anda mulai terlibat dalam organisasi atau komunitas?</label>
-                <input type="text" name="waktuTerlibat" placeholder="Tahun/Usia" required>
+                <input type="number" id="startYear" name="startYear" placeholder="Tahun mulai" min="1900" max="2099" step="1">
+                <input type="number" id="startMonth" name="startMonth" placeholder="Bulan mulai" min="1" max="12" step="1">
+                <label for="endYear">Sampai tahun:</label>
+                <input type="number" id="endYear" name="endYear" placeholder="Tahun akhir" min="1900" max="2099" step="1">
+                <input type="number" id="endMonth" name="endMonth" placeholder="Bulan akhir" min="1" max="12" step="1">
             </div>
+            
+            <input type="hidden" id="result" name="result">
+            
+            <Script>
+                function calculateTimeSpan() {
+                    const currentYear = new Date().getFullYear();
+                    const currentMonth = new Date().getMonth() + 1;
+
+                    const startYear = document.getElementById('startYear').value;
+                    const startMonth = document.getElementById('startMonth').value;
+                    const endYear = document.getElementById('endYear').value;
+                    const endMonth = document.getElementById('endMonth').value;
+
+                    let timeSpanYears = 0;
+                    let timeSpanMonths = 0;
+                    let resultMessage = '';
+
+                    if (!startYear && !startMonth && !endYear && !endMonth) {
+                        resultMessage = ''; 
+                    }
+
+                    if (startYear && startMonth && endYear && endMonth) {
+                        if (endYear < startYear || (endYear == startYear && endMonth < startMonth)) {
+                            resultMessage = 'Tahun dan bulan akhir tidak bisa lebih kecil dari tahun dan bulan mulai.';
+                        } else {
+                            timeSpanYears = endYear - startYear;
+                            timeSpanMonths = endMonth - startMonth;
+
+                            if (timeSpanMonths < 0) {
+                                timeSpanYears--;
+                                timeSpanMonths += 12;
+                            }
+                            resultMessage = `Rentang waktu: ${timeSpanYears} tahun ${timeSpanMonths} bulan`;
+                        }
+                    } else if (startYear && startMonth) {
+                        timeSpanYears = currentYear - startYear;
+                        timeSpanMonths = currentMonth - startMonth;
+
+                        if (timeSpanMonths < 0) {
+                            timeSpanYears--;
+                            timeSpanMonths += 12;
+                        }
+                        resultMessage = `Rentang waktu: ${timeSpanYears} tahun ${timeSpanMonths} bulan`;
+                    }
+
+                    document.getElementById('result').value = resultMessage || '';
+                    document.getElementById('resultDisplay').innerText = resultMessage || '';
+                }
+
+                document.getElementById('startYear').addEventListener('input', calculateTimeSpan);
+                document.getElementById('startMonth').addEventListener('input', calculateTimeSpan);
+                document.getElementById('endYear').addEventListener('input', calculateTimeSpan);
+                document.getElementById('endMonth').addEventListener('input', calculateTimeSpan);
+
+            </Script>
 
             <div class="question">
                 <label>Seberapa sering Anda terlibat dalam kegiatan organisasi atau komunitas tersebut?</label>
@@ -251,14 +310,6 @@
                 <input type="radio" name="dampakPribadi" value="Ya" required> Ya
                 <input type="radio" name="dampakPribadi" value="Tidak"> Tidak
             </div>
-
-            <div class="question">
-                <label>Seberapa lama Anda sudah terlibat dalam organisasi atau komunitas ini?</label>
-                <input type="radio" name="durasiTerlibat" value="Kurang dari 6 bulan" required> Kurang dari 6 bulan <br>
-                <input type="radio" name="durasiTerlibat" value="6-12 bulan"> 6-12 bulan <br>
-                <input type="radio" name="durasiTerlibat" value="1-2 tahun"> 1-2 tahun <br>
-                <input type="radio" name="durasiTerlibat" value="Lebih dari 2 tahun"> Lebih dari 2 tahun
-            </div> 
 
             <div class="question">
                 <label>Apakah Anda merasa bahwa organisasi atau komunitas ini memberi Anda peluang untuk berkembang secara pribadi atau profesional?</label>
@@ -380,14 +431,6 @@
                 <label>Apakah pengalaman di organisasi atau komunitas membuat Anda lebih terbuka dalam menerima kritik konstruktif?</label>
                 <input type="radio" name="kritikKonstruktif" value="Ya" required> Ya
                 <input type="radio" name="kritikKonstruktif" value="Tidak"> Tidak
-            </div>
-
-            <div class="question">
-                <label>Sejauh mana organisasi atau komunitas ini membantu Anda dalam membentuk nilai-nilai pribadi yang lebih jelas?</label>
-                <input type="radio" name="nilaiPribadi" value="Sangat membantu" required> Sangat membantu <br>
-                <input type="radio" name="nilaiPribadi" value="Cukup membantu"> Cukup membantu <br>
-                <input type="radio" name="nilaiPribadi" value="Tidak terlalu membantu"> Tidak terlalu membantu <br>
-                <input type="radio" name="nilaiPribadi" value="Tidak membantu sama sekali"> Tidak membantu sama sekali
             </div>
 
             <div class="question">
